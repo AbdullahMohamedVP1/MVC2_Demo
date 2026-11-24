@@ -1,15 +1,28 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using G_ASP_NET_96_MVC2.Contexts;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace G_ASP_NET_96_MVC2.Controllers
 {
     public class PlanController : Controller
     {
+        private readonly GymDbContext dbContext;
+
+        public PlanController(GymDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
+
         public IActionResult IndexTest()
         {
-            return View(); //return view with same action name [Views/Plan/IndexTest.cshtml]
-            //return View("ViewTEST");
-            //return View(new Member() {});
-            //return View("ViewTEST", new Member() { });
+            return View();
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var plans = await dbContext.Plans.ToListAsync();
+            return View(plans);
         }
     }
 }
