@@ -11,5 +11,8 @@
         public decimal Price { get; set; }
          
         public bool IsActive { get; set; }
+
+        //Relationship
+        public ICollection<Membership> PlanSubscriptions { get; set; } = default!;
     }
 }
