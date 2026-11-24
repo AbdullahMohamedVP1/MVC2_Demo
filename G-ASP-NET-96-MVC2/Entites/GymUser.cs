@@ -11,6 +11,6 @@ namespace G_ASP_NET_96_MVC2.Entites
         public DateOnly DateOfBirth { get; set; }
 
         public Gender Gender { get; set; }
-        public Address Address { get; set; }
+        public Address Address { get; set; } = default!;
     }
 }
